@@ -1,0 +1,840 @@
+/* =========================================
+   REVCONNECT - MODERN FULL-SCREEN THEME
+========================================= */
+
+:root {
+    --primary: #FF6752; /* Coral accent */
+    --bg-outer: #F8F9FA; /* Clean light gray background */
+    --surface: #FFFFFF; /* White cards and panels */
+    --surface-alt: #F3F4F6;
+
+    --text-main: #111827;
+    --text-muted: #6B7280;
+
+    --border: #E5E7EB;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Plus Jakarta Sans", "Inter", sans-serif;
+    background-color: var(--bg-outer) !important;
+    color: var(--text-main);
+    padding: 0; /* Removed outer padding for full-screen layout */
+    margin: 0;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================
+   DASHBOARD LAYOUT (FULL SCREEN)
+========================================= */
+
+.dashboard {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    background: var(--bg-outer);
+}
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.sidebar {
+    width: 300px; /* Increased from 260px for a better proportional look */
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    padding: 40px 30px; /* Increased horizontal padding */
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    flex-shrink: 0;
+}
+
+.brand {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: var(--text-main);
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+.sidebar-profile {
+    text-align: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+}
+
+.profile-ring {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    background: var(--primary);
+    padding: 3px;
+}
+
+.sidebar-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface);
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.name-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.verified {
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #3B82F6;
+    color: var(--surface);
+    font-size: 10px;
+}
+
+#profileAccountType {
+    display: block;
+    margin-top: 4px;
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.profile-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 20px;
+}
+
+.profile-stats div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-align: center;
+}
+
+.profile-stats strong {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.profile-stats span {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+/* NAVIGATION */
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-grow: 1;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.nav-link svg {
+    width: 20px;
+    height: 20px;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    background: var(--primary);
+    color: var(--surface);
+}
+
+.sidebar .logout-btn {
+    width: 100%;
+    border: none;
+    background: var(--surface-alt);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--text-main);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: auto;
+}
+
+/* =========================================
+   MAIN CANVAS & HEADER
+========================================= */
+
+.main {
+    flex-grow: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 40px;
+}
+
+.top-header {
+    padding: 24px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    position: sticky;
+    top: 0;
+    background: var(--bg-outer);
+    z-index: 10;
+}
+
+.search-box {
+    flex-grow: 1;
+    max-width: 450px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+}
+
+.search-box svg {
+    width: 18px;
+    color: var(--text-muted);
+}
+
+.search-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--text-main);
+}
+
+.add-photo-btn {
+    height: 44px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    border-radius: 9999px;
+    background: var(--text-main);
+    color: var(--surface);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* =========================================
+   STORIES
+========================================= */
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.section-header a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.stories-section {
+    margin-bottom: 30px;
+}
+
+.stories {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+}
+
+.stories::-webkit-scrollbar {
+    display: none;
+}
+
+.story {
+    min-width: 65px;
+    text-align: center;
+}
+
+.story-ring {
+    width: 65px;
+    height: 65px;
+    padding: 2px;
+    margin: auto;
+    border-radius: 50%;
+    background: var(--primary);
+}
+
+.story-avatar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 2px solid var(--surface);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.add-story-ring {
+    background: var(--border);
+}
+
+.add-story {
+    color: var(--text-muted);
+    font-size: 24px;
+}
+
+.story > span {
+    display: block;
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* =========================================
+   FEED & MASONRY
+========================================= */
+
+.feed-filter {
+    display: flex;
+    gap: 8px;
+    background: var(--surface);
+    padding: 4px;
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+}
+
+.feed-filter button {
+    border: none;
+    background: transparent;
+    padding: 8px 16px;
+    border-radius: 9999px;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.feed-filter .filter-active {
+    background: var(--surface-alt);
+    color: var(--text-main);
+}
+
+.feed-grid {
+    column-count: 3;
+    column-gap: 20px;
+}
+
+.feed-card {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 20px;
+    break-inside: avoid;
+    background: var(--surface);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.media {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+}
+
+.media-placeholder {
+    width: 100%;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.media-one { min-height: 250px; background: #FFDDA1; }
+.media-two { min-height: 200px; background: #C5D6F9; }
+.media-three { min-height: 280px; background: #E5C3D1; }
+.media-four { min-height: 220px; background: #A7E0D3; }
+.media-five { min-height: 260px; background: #E5E5E5; }
+.media-six { min-height: 210px; background: #FCD5CE; }
+
+.media-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.media-badge svg {
+    width: 14px;
+    color: var(--text-main);
+}
+
+.card-info {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-user > span {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.mini-avatar {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--surface);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.card-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.card-actions span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.card-actions svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* =========================================
+   PROFILE PAGE (profile.html)
+========================================= */
+
+.profile-page {
+    max-width: 800px;
+    margin: 40px auto;
+    background: var(--surface);
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.profile-topbar {
+    padding: 20px 30px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-topbar h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.back-btn {
+    text-decoration: none;
+    font-size: 24px;
+    color: var(--text-main);
+}
+
+/* Refined Logout Button in Top Bar */
+.profile-topbar .logout-btn {
+    background: #FEE2E2;
+    color: #EF4444;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.profile-container {
+    padding: 40px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.profile-name-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.profile-name-row h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.account-badge {
+    background: var(--surface-alt);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.profile-info p {
+    margin: 4px 0;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.profile-info #fullName {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+/* Medium Centered Edit Button */
+.edit-profile-btn {
+    display: block;
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto 30px;
+    background: var(--primary);
+    color: var(--surface);
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.edit-profile-form {
+    background: var(--surface-alt);
+    padding: 24px;
+    border-radius: 16px;
+    margin-top: 20px;
+    border: 1px solid var(--border);
+}
+
+.edit-profile-form h4 {
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.edit-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.cancel-btn,
+.save-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background: #E5E7EB;
+    color: var(--text-main);
+}
+
+.save-btn {
+    background: var(--primary);
+    color: var(--surface);
+}
+
+/* =========================================
+   LOGIN & REGISTER PAGES (Centered Auth)
+========================================= */
+
+/* Ensure the container stretches and centers content vertically */
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Overriding Bootstrap Grid to ensure perfect centering */
+.row.justify-content-center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.card.shadow {
+    width: 100%;
+    max-width: 450px; /* Constrain width for a sleek look */
+    border: 1px solid var(--border) !important;
+    border-radius: 24px;
+    box-shadow: var(--shadow) !important;
+    padding: 10px;
+    background: var(--surface);
+}
+
+.card-body h2 {
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.card-body p {
+    color: var(--text-muted);
+    margin-bottom: 24px;
+}
+
+.form-label {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text-main);
+}
+
+.form-control,
+.form-select {
+    border-radius: 10px;
+    padding: 12px 16px;
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary);
+    box-shadow: none;
+    background: var(--surface);
+}
+
+.btn-primary {
+    background: var(--primary) !important;
+    border: none !important;
+    border-radius: 10px;
+    padding: 14px;
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+/* =========================================
+   RESPONSIVE MEDIA QUERIES (NO OVERLAP)
+========================================= */
+
+/* 13-inch Laptops & Small Desktops */
+@media (max-width: 1200px) {
+    .feed-grid { column-count: 2; }
+    .sidebar { width: 240px; padding: 30px 15px; }
+    .search-box { max-width: 300px; }
+}
+
+/* Tablets (Collapse Sidebar) */
+@media (max-width: 900px) {
+    .sidebar {
+        width: 80px;
+        padding: 25px 10px;
+    }
+
+    .brand,
+    .sidebar-profile .sidebar-name,
+    .profile-stats,
+    .nav-link span,
+    .sidebar .logout-btn span {
+        display: none;
+    }
+
+    .profile-ring {
+        width: 50px;
+        height: 50px;
+    }
+
+    .sidebar-avatar {
+        font-size: 18px;
+    }
+
+    .nav-link {
+        justify-content: center;
+        padding: 14px 0;
+    }
+
+    .sidebar .logout-btn {
+        padding: 14px 0;
+    }
+
+    .main { padding: 0 30px 30px; }
+}
+
+/* Mobile Devices */
+@media (max-width: 600px) {
+    .feed-grid { column-count: 1; }
+
+    .sidebar {
+        width: 65px;
+        padding: 20px 5px;
+    }
+
+    .main { padding: 0 15px 20px; }
+
+    .top-header {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px 0;
+        gap: 16px;
+        position: static;
+        background: transparent;
+    }
+
+    .search-box { max-width: 100%; }
+
+    .header-actions { justify-content: space-between; }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .feed-filter { width: 100%; overflow-x: auto; }
+
+    /* Profile Adjustments for Mobile */
+    .profile-page {
+        margin: 20px 15px;
+        border-radius: 16px;
+    }
+
+    .profile-container { padding: 25px 20px; }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-name-row {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+    }
+}
