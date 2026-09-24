@@ -14,25 +14,68 @@ public class UserService {
     private final UserRepository userRepository;
     private final ProfileRepository profileRepository;
 
-    public UserService(UserRepository userRepository, ProfileRepository profileRepository) {
+    public UserService(
+            UserRepository userRepository,
+            ProfileRepository profileRepository) {
+
         this.userRepository = userRepository;
         this.profileRepository = profileRepository;
     }
 
-    public ProfileResponse getMyProfile(String email) {
-        User user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
-        Profile profile = profileRepository.findByUserId(user.getId()).orElseThrow(() -> new RuntimeException("Profile not found"));
-        return new ProfileResponse(user.getId(), user.getUsername(), user.getEmail(), user.getAccountType(), profile.getFullName(), profile.getBio(), profile.getProfilePicture(), profile.getPrivacy());
+    public ProfileResponse getMyProfile(Long userId) {
+
+        User user = userRepository
+                .findById(userId)
+                .orElseThrow(() ->
+                        new RuntimeException("User not found"));
+
+        Profile profile = profileRepository
+                .findByUserId(user.getId())
+                .orElseThrow(() ->
+                        new RuntimeException("Profile not found"));
+
+        return new ProfileResponse(
+                user.getId(),
+                user.getUsername(),
+                user.getEmail(),
+                user.getAccountType(),
+                profile.getFullName(),
+                profile.getBio(),
+                profile.getProfilePicture(),
+                profile.getPrivacy()
+        );
     }
 
-    public ProfileResponse updateMyProfile(String email, UpdateProfileRequest request) {
-        User user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
-        Profile profile = profileRepository.findByUserId(user.getId()).orElseThrow(() -> new RuntimeException("Profile not found"));
+    public ProfileResponse updateMyProfile(
+            Long userId,
+            UpdateProfileRequest request) {
+
+        User user = userRepository
+                .findById(userId)
+                .orElseThrow(() ->
+                        new RuntimeException("User not found"));
+
+        Profile profile = profileRepository
+                .findByUserId(user.getId())
+                .orElseThrow(() ->
+                        new RuntimeException("Profile not found"));
+
         profile.setFullName(request.getFullName());
         profile.setBio(request.getBio());
         profile.setProfilePicture(request.getProfilePicture());
         profile.setPrivacy(request.getPrivacy());
+
         profileRepository.save(profile);
-        return new ProfileResponse(user.getId(), user.getUsername(), user.getEmail(), user.getAccountType(), profile.getFullName(), profile.getBio(), profile.getProfilePicture(), profile.getPrivacy());
+
+        return new ProfileResponse(
+                user.getId(),
+                user.getUsername(),
+                user.getEmail(),
+                user.getAccountType(),
+                profile.getFullName(),
+                profile.getBio(),
+                profile.getProfilePicture(),
+                profile.getPrivacy()
+        );
     }
 }

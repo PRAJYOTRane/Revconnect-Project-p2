@@ -19,20 +19,34 @@ public class UserController {
     }
 
     @GetMapping("/me")
-    public ResponseEntity<ProfileResponse> getMyProfile(Authentication authentication) {
-        String email = authentication.getName();
-        return ResponseEntity.ok(userService.getMyProfile(email));
+    public ResponseEntity<ProfileResponse> getMyProfile(
+            Authentication authentication) {
+
+        Long userId = (Long) authentication.getPrincipal();
+
+        return ResponseEntity.ok(
+                userService.getMyProfile(userId)
+        );
     }
 
     @PutMapping("/profile")
-    public ResponseEntity<ProfileResponse> updateMyProfile(Authentication authentication, @RequestBody UpdateProfileRequest request) {
-        String email = authentication.getName();
-        return ResponseEntity.ok(userService.updateMyProfile(email, request));
+    public ResponseEntity<ProfileResponse> updateMyProfile(
+            Authentication authentication,
+            @RequestBody UpdateProfileRequest request) {
+
+        Long userId = (Long) authentication.getPrincipal();
+
+        return ResponseEntity.ok(
+                userService.updateMyProfile(userId, request)
+        );
     }
 
     @GetMapping("/creator-test")
     @PreAuthorize("hasRole('CREATOR')")
     public ResponseEntity<String> creatorTest() {
-        return ResponseEntity.ok("Creator-only API accessed successfully!");
+
+        return ResponseEntity.ok(
+                "Creator-only API accessed successfully!"
+        );
     }
 }

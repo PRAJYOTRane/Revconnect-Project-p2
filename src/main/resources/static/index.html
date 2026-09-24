@@ -38,15 +38,19 @@
                 RevConnect
             </div>
 
+
             <!-- PROFILE -->
 
             <div class="sidebar-profile">
 
                 <div class="profile-ring">
+
                     <div class="sidebar-avatar">
                         S
                     </div>
+
                 </div>
+
 
                 <div class="sidebar-name">
 
@@ -95,34 +99,66 @@
 
             <nav class="navigation">
 
-                <a href="#" class="nav-link active">
+                <a href="/index.html" class="nav-link active">
+
                     <i data-lucide="layout-grid"></i>
+
                     <span>Feed</span>
+
                 </a>
 
+
+                <a href="javascript:void(0)" class="nav-link" id="navCreateBtn">
+
+                    <i data-lucide="plus-square"></i>
+
+                    <span>Create</span>
+
+                </a>
+
+
                 <a href="#" class="nav-link">
+
                     <i data-lucide="compass"></i>
+
                     <span>Explore</span>
+
                 </a>
 
+
                 <a href="#" class="nav-link">
+
                     <i data-lucide="heart"></i>
+
                     <span>Notifications</span>
+
                 </a>
 
+
                 <a href="#" class="nav-link">
+
                     <i data-lucide="message-circle"></i>
+
                     <span>Direct</span>
+
                 </a>
 
+
                 <a href="#" class="nav-link">
+
                     <i data-lucide="bar-chart-3"></i>
+
                     <span>Stats</span>
+
                 </a>
+
 
                 <a href="/profile.html" class="nav-link">
+
                     <i data-lucide="settings"></i>
+
                     <span>Settings</span>
+
                 </a>
 
             </nav>
@@ -147,6 +183,7 @@
 
     <main class="main">
 
+
         <!-- TOP HEADER -->
 
         <header class="top-header">
@@ -165,22 +202,34 @@
             <div class="header-actions">
 
                 <button class="icon-btn">
+
                     <i data-lucide="home"></i>
+
                 </button>
 
+
                 <button class="icon-btn">
+
                     <i data-lucide="message-circle"></i>
+
                 </button>
 
+
                 <button class="icon-btn">
+
                     <i data-lucide="compass"></i>
+
                 </button>
+
 
                 <button class="icon-btn">
+
                     <i data-lucide="heart"></i>
+
                 </button>
 
-                <button class="add-photo-btn">
+
+                <button class="add-photo-btn" id="headerAddPhotoBtn">
 
                     <i data-lucide="plus"></i>
 
@@ -199,7 +248,9 @@
 
             <div class="section-header">
 
-                <h2>Stories</h2>
+                <h2>
+                    Stories
+                </h2>
 
                 <a href="#">
                     Watch all →
@@ -209,6 +260,7 @@
 
 
             <div class="stories">
+
 
                 <!-- ADD STORY -->
 
@@ -222,64 +274,132 @@
 
                     </div>
 
-                    <span>Add Story</span>
+                    <span>
+                        Add Story
+                    </span>
 
                 </div>
 
+
+                <!-- ALEX -->
 
                 <div class="story">
 
                     <div class="story-ring">
-                        <div class="story-avatar">A</div>
+
+                        <div class="story-avatar">
+                            A
+                        </div>
+
                     </div>
 
-                    <span>Alex</span>
+                    <span>
+                        Alex
+                    </span>
 
                 </div>
 
+
+                <!-- MAYA -->
 
                 <div class="story">
 
                     <div class="story-ring">
-                        <div class="story-avatar">M</div>
+
+                        <div class="story-avatar">
+                            M
+                        </div>
+
                     </div>
 
-                    <span>Maya</span>
+                    <span>
+                        Maya
+                    </span>
 
                 </div>
 
+
+                <!-- RAHUL -->
 
                 <div class="story">
 
                     <div class="story-ring">
-                        <div class="story-avatar">R</div>
+
+                        <div class="story-avatar">
+                            R
+                        </div>
+
                     </div>
 
-                    <span>Rahul</span>
+                    <span>
+                        Rahul
+                    </span>
 
                 </div>
 
+
+                <!-- SARAH -->
 
                 <div class="story">
 
                     <div class="story-ring">
-                        <div class="story-avatar">S</div>
+
+                        <div class="story-avatar">
+                            S
+                        </div>
+
                     </div>
 
-                    <span>Sarah</span>
+                    <span>
+                        Sarah
+                    </span>
 
                 </div>
 
+
+                <!-- KRISH -->
 
                 <div class="story">
 
                     <div class="story-ring">
-                        <div class="story-avatar">K</div>
+
+                        <div class="story-avatar">
+                            K
+                        </div>
+
                     </div>
 
-                    <span>Krish</span>
+                    <span>
+                        Krish
+                    </span>
 
                 </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             QUICK CREATE BAR (OPENS INSTAGRAM MODAL)
+        ====================================================== -->
+
+        <section class="quick-create-section">
+
+            <div class="quick-create-card" id="quickCreateTrigger">
+
+                <div class="quick-create-avatar" id="quickCreateAvatar">
+                    S
+                </div>
+
+                <div class="quick-create-input-placeholder">
+                    What's on your mind? Share a photo or update...
+                </div>
+
+                <button type="button" class="quick-create-media-btn" id="quickCreatePhotoBtn">
+                    <i data-lucide="image-plus"></i>
+                    <span>Photo</span>
+                </button>
 
             </div>
 
@@ -292,7 +412,10 @@
 
             <div class="section-header feed-header">
 
-                <h2>Feed</h2>
+                <h2>
+                    Feed
+                </h2>
+
 
                 <div class="feed-filter">
 
@@ -311,7 +434,7 @@
 
             <!-- MASONRY GRID -->
 
-            <div class="feed-grid">
+            <div class="feed-grid" id="feedGrid">
 
 
                 <!-- CARD 1 -->
@@ -326,6 +449,7 @@
 
                     </div>
 
+
                     <div class="card-info">
 
                         <div class="card-user">
@@ -334,20 +458,30 @@
                                 S
                             </div>
 
-                            <span>@siddhi2806</span>
+                            <span>
+                                @siddhi2806
+                            </span>
 
                         </div>
+
 
                         <div class="card-actions">
 
                             <span>
+
                                 <i data-lucide="heart"></i>
+
                                 120
+
                             </span>
 
+
                             <span>
+
                                 <i data-lucide="message-circle"></i>
+
                                 18
+
                             </span>
 
                         </div>
@@ -367,11 +501,15 @@
                             💻
                         </div>
 
+
                         <span class="media-badge">
+
                             <i data-lucide="play"></i>
+
                         </span>
 
                     </div>
+
 
                     <div class="card-info">
 
@@ -381,20 +519,30 @@
                                 A
                             </div>
 
-                            <span>@alexdev</span>
+                            <span>
+                                @alexdev
+                            </span>
 
                         </div>
+
 
                         <div class="card-actions">
 
                             <span>
+
                                 <i data-lucide="heart"></i>
+
                                 86
+
                             </span>
 
+
                             <span>
+
                                 <i data-lucide="message-circle"></i>
+
                                 12
+
                             </span>
 
                         </div>
@@ -416,6 +564,7 @@
 
                     </div>
 
+
                     <div class="card-info">
 
                         <div class="card-user">
@@ -424,20 +573,30 @@
                                 M
                             </div>
 
-                            <span>@maya</span>
+                            <span>
+                                @maya
+                            </span>
 
                         </div>
+
 
                         <div class="card-actions">
 
                             <span>
+
                                 <i data-lucide="heart"></i>
+
                                 214
+
                             </span>
 
+
                             <span>
+
                                 <i data-lucide="message-circle"></i>
+
                                 32
+
                             </span>
 
                         </div>
@@ -459,6 +618,7 @@
 
                     </div>
 
+
                     <div class="card-info">
 
                         <div class="card-user">
@@ -467,20 +627,30 @@
                                 R
                             </div>
 
-                            <span>@rahul</span>
+                            <span>
+                                @rahul
+                            </span>
 
                         </div>
+
 
                         <div class="card-actions">
 
                             <span>
+
                                 <i data-lucide="heart"></i>
+
                                 154
+
                             </span>
 
+
                             <span>
+
                                 <i data-lucide="message-circle"></i>
+
                                 21
+
                             </span>
 
                         </div>
@@ -502,6 +672,7 @@
 
                     </div>
 
+
                     <div class="card-info">
 
                         <div class="card-user">
@@ -510,20 +681,30 @@
                                 S
                             </div>
 
-                            <span>@sarah</span>
+                            <span>
+                                @sarah
+                            </span>
 
                         </div>
+
 
                         <div class="card-actions">
 
                             <span>
+
                                 <i data-lucide="heart"></i>
+
                                 98
+
                             </span>
 
+
                             <span>
+
                                 <i data-lucide="message-circle"></i>
+
                                 9
+
                             </span>
 
                         </div>
@@ -543,11 +724,15 @@
                             🏔️
                         </div>
 
+
                         <span class="media-badge">
+
                             <i data-lucide="images"></i>
+
                         </span>
 
                     </div>
+
 
                     <div class="card-info">
 
@@ -557,20 +742,30 @@
                                 K
                             </div>
 
-                            <span>@krish</span>
+                            <span>
+                                @krish
+                            </span>
 
                         </div>
+
 
                         <div class="card-actions">
 
                             <span>
+
                                 <i data-lucide="heart"></i>
+
                                 176
+
                             </span>
 
+
                             <span>
+
                                 <i data-lucide="message-circle"></i>
+
                                 25
+
                             </span>
 
                         </div>
@@ -588,6 +783,122 @@
 </div>
 
 
+<!-- =====================================================
+     INSTAGRAM-STYLE CREATE POST MODAL
+====================================================== -->
+
+<div id="createPostModal" class="ig-modal-overlay" style="display: none;">
+
+    <div class="ig-modal-dialog" id="igModalDialog">
+
+        <!-- HEADER -->
+        <div class="ig-modal-header">
+            <button type="button" class="ig-header-icon-btn" id="modalBackBtn" style="display: none;" title="Back to photo selection">
+                <i data-lucide="arrow-left"></i>
+            </button>
+
+            <span class="ig-modal-title" id="modalTitle">Create new post</span>
+
+            <div class="ig-header-right">
+                <button type="button" class="ig-header-action-btn" id="modalHeaderShareBtn" style="display: none;">
+                    Share
+                </button>
+                <button type="button" class="ig-header-icon-btn" id="modalCloseBtn" title="Close">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- STEP 1: SELECT PHOTO (DRAG & DROP) -->
+        <div class="ig-modal-body" id="modalSelectStep">
+            <div class="ig-dropzone" id="igDropzone">
+                <div class="ig-dropzone-icon">
+                    <i data-lucide="image-plus"></i>
+                </div>
+                <h3 class="ig-dropzone-title">Drag photos here</h3>
+                <p class="ig-dropzone-sub">Supports JPG, PNG, WEBP, GIF</p>
+                <button type="button" class="ig-btn-primary" id="modalSelectFileBtn">
+                    Select from computer
+                </button>
+                <input type="file" id="modalFileInput" accept="image/*" hidden>
+            </div>
+        </div>
+
+        <!-- STEP 2: PHOTO PREVIEW & ENTER CAPTION (SPLIT VIEW) -->
+        <div class="ig-modal-body ig-split-view" id="modalDetailsStep" style="display: none;">
+
+            <!-- LEFT: PHOTO PREVIEW -->
+            <div class="ig-preview-pane">
+                <div class="ig-preview-img-wrapper">
+                    <img id="modalPreviewImg" src="" alt="Photo Preview">
+                </div>
+                <div class="ig-preview-tools">
+                    <button type="button" class="ig-preview-tool-btn" id="modalChangePhotoBtn" title="Choose another photo">
+                        <i data-lucide="image"></i>
+                        <span>Change photo</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- RIGHT: USER, CAPTION & SHARE -->
+            <div class="ig-caption-pane">
+                <div class="ig-author-header">
+                    <div class="ig-author-avatar" id="modalUserAvatar">U</div>
+                    <div class="ig-author-details">
+                        <strong id="modalUsername">username</strong>
+                        <span class="ig-account-type-badge" id="modalAccountType">Personal</span>
+                    </div>
+                </div>
+
+                <div class="ig-caption-box">
+                    <textarea
+                            id="modalCaptionText"
+                            placeholder="Write a caption..."
+                            rows="6"
+                            maxlength="2200"></textarea>
+
+                    <div class="ig-caption-footer">
+                        <div class="ig-quick-emojis">
+                            <span class="ig-quick-emoji" data-emoji="🔥">🔥</span>
+                            <span class="ig-quick-emoji" data-emoji="❤️">❤️</span>
+                            <span class="ig-quick-emoji" data-emoji="✨">✨</span>
+                            <span class="ig-quick-emoji" data-emoji="🙌">🙌</span>
+                            <span class="ig-quick-emoji" data-emoji="🚀">🚀</span>
+                            <span class="ig-quick-emoji" data-emoji="📸">📸</span>
+                        </div>
+                        <span class="ig-char-counter" id="modalCharCounter">0/2,200</span>
+                    </div>
+                </div>
+
+                <div class="ig-caption-meta">
+                    <div class="ig-meta-row">
+                        <i data-lucide="map-pin"></i>
+                        <span>Add Location</span>
+                    </div>
+                    <div class="ig-meta-row">
+                        <i data-lucide="tag"></i>
+                        <span>Tag People</span>
+                    </div>
+                </div>
+
+                <div class="ig-caption-action-area">
+                    <div id="modalStatusAlert" class="ig-status-alert" style="display: none;"></div>
+                    <button type="button" class="ig-share-btn-main" id="modalShareSubmitBtn">
+                        <span class="btn-text">Share</span>
+                        <span class="btn-spinner" style="display: none;"></span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
 <script src="/js/home.js"></script>
 
 <script>
@@ -595,4 +906,5 @@
 </script>
 
 </body>
+
 </html>
