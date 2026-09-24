@@ -4,6 +4,11 @@ import com.revconnect.revconnect.post.dto.PostRequest;
 import com.revconnect.revconnect.post.dto.PostResponse;
 import com.revconnect.revconnect.post.entity.Post;
 import com.revconnect.revconnect.post.repository.PostRepository;
+import com.revconnect.revconnect.user.entity.User;
+import com.revconnect.revconnect.user.repository.UserRepository;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,163 +36,256 @@ public class PostService {
     private static final int MAX_CAPTION_LENGTH = 2200;
 
     private final PostRepository postRepository;
+    private final UserRepository userRepository;
 
-    public PostService(PostRepository postRepository) {
+    public PostService(
+            PostRepository postRepository,
+            UserRepository userRepository) {
+
         this.postRepository = postRepository;
+        this.userRepository = userRepository;
     }
 
-    /**
-     * Create a post with a required photo and optional caption.
-     * Called from the multipart endpoint.
-     */
     public PostResponse createPost(
             Long userId,
             MultipartFile photo,
             String caption) {
 
-        // Photo is required
         if (photo == null || photo.isEmpty()) {
             throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST, "A photo is required.");
+                    HttpStatus.BAD_REQUEST,
+                    "A photo is required."
+            );
         }
 
-        // Validate MIME type
         String contentType = photo.getContentType();
-        if (contentType == null || !ALLOWED_MIME_TYPES.contains(contentType.toLowerCase())) {
+
+        if (contentType == null
+                || !ALLOWED_MIME_TYPES.contains(
+                contentType.toLowerCase())) {
+
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,
-                    "Only image files are allowed (JPEG, PNG, WEBP, GIF).");
+                    "Only image files are allowed (JPEG, PNG, WEBP, GIF)."
+            );
         }
 
-        // Caption is optional — trim and enforce max length
-        String trimmedCaption = (caption != null) ? caption.trim() : "";
+        String trimmedCaption = (caption != null)
+                ? caption.trim()
+                : "";
+
         if (trimmedCaption.length() > MAX_CAPTION_LENGTH) {
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,
-                    "Caption must not exceed " + MAX_CAPTION_LENGTH + " characters.");
+                    "Caption must not exceed "
+                            + MAX_CAPTION_LENGTH
+                            + " characters."
+            );
         }
 
         String photoUrl = saveImage(photo);
 
         Post post = new Post();
+
         post.setUserId(userId);
         post.setCaption(trimmedCaption);
         post.setPhotoUrl(photoUrl);
         post.setStatus("PUBLISHED");
 
         Post savedPost = postRepository.save(post);
-        return new PostResponse(savedPost);
+
+        return createPostResponse(savedPost);
     }
 
-    /**
-     * Create a post from JSON body (caption-only path, kept for backwards compatibility).
-     * Photo is still required per spec, so this path now rejects the request.
-     */
     public PostResponse createPost(
             Long userId,
             PostRequest request) {
 
         throw new ResponseStatusException(
                 HttpStatus.BAD_REQUEST,
-                "Use multipart/form-data with a photo field to create a post.");
+                "Use multipart/form-data with a photo field to create a post."
+        );
     }
 
     private String saveImage(MultipartFile file) {
+
         try {
-            Path uploadDir = Paths.get("uploads", "posts");
+
+            Path uploadDir =
+                    Paths.get("uploads", "posts");
+
             if (!Files.exists(uploadDir)) {
                 Files.createDirectories(uploadDir);
             }
 
-            String originalName = file.getOriginalFilename();
+            String originalName =
+                    file.getOriginalFilename();
+
             String extension = ".jpg";
-            if (originalName != null && originalName.contains(".")) {
+
+            if (originalName != null
+                    && originalName.contains(".")) {
+
                 String ext = originalName
-                        .substring(originalName.lastIndexOf("."))
+                        .substring(
+                                originalName.lastIndexOf(".")
+                        )
                         .toLowerCase();
-                // Only keep safe, known extensions
-                if (ext.equals(".jpg") || ext.equals(".jpeg")
-                        || ext.equals(".png") || ext.equals(".webp")
+
+                if (ext.equals(".jpg")
+                        || ext.equals(".jpeg")
+                        || ext.equals(".png")
+                        || ext.equals(".webp")
                         || ext.equals(".gif")) {
+
                     extension = ext;
                 }
             }
 
-            String filename = UUID.randomUUID().toString() + extension;
-            Path targetPath = uploadDir.resolve(filename);
+            String filename =
+                    UUID.randomUUID().toString()
+                            + extension;
 
-            Files.copy(file.getInputStream(), targetPath, StandardCopyOption.REPLACE_EXISTING);
+            Path targetPath =
+                    uploadDir.resolve(filename);
+
+            Files.copy(
+                    file.getInputStream(),
+                    targetPath,
+                    StandardCopyOption.REPLACE_EXISTING
+            );
 
             return "/uploads/posts/" + filename;
+
         } catch (IOException e) {
+
             throw new ResponseStatusException(
                     HttpStatus.INTERNAL_SERVER_ERROR,
-                    "Failed to save image: " + e.getMessage());
+                    "Failed to save image: "
+                            + e.getMessage()
+            );
         }
     }
 
-    public List<PostResponse> getAllPublishedPosts() {
+    public Page<PostResponse> getPublishedPosts(
+            Pageable pageable) {
+
         return postRepository
-                .findByStatusOrderByCreatedAtDesc("PUBLISHED")
-                .stream()
-                .map(PostResponse::new)
-                .toList();
+                .findByStatusOrderByCreatedAtDesc(
+                        "PUBLISHED",
+                        pageable
+                )
+                .map(this::createPostResponse);
     }
 
     public List<PostResponse> getMyPosts(Long userId) {
+
         return postRepository
                 .findByUserIdOrderByCreatedAtDesc(userId)
                 .stream()
-                .map(PostResponse::new)
+                .map(this::createPostResponse)
                 .toList();
     }
 
     public PostResponse getPost(Long id) {
+
         Post post = postRepository
                 .findById(id)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.NOT_FOUND, "Post not found"));
+                .orElseThrow(() ->
+                        new ResponseStatusException(
+                                HttpStatus.NOT_FOUND,
+                                "Post not found"
+                        )
+                );
 
-        return new PostResponse(post);
+        return createPostResponse(post);
     }
 
-    public PostResponse updatePost(Long id, Long userId, PostRequest request) {
+    public PostResponse updatePost(
+            Long id,
+            Long userId,
+            PostRequest request) {
+
         Post post = postRepository
                 .findById(id)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.NOT_FOUND, "Post not found"));
+                .orElseThrow(() ->
+                        new ResponseStatusException(
+                                HttpStatus.NOT_FOUND,
+                                "Post not found"
+                        )
+                );
 
         if (!post.getUserId().equals(userId)) {
+
             throw new ResponseStatusException(
-                    HttpStatus.FORBIDDEN, "You are not allowed to edit this post");
+                    HttpStatus.FORBIDDEN,
+                    "You are not allowed to edit this post"
+            );
         }
 
-        String trimmedCaption = (request.getCaption() != null)
-                ? request.getCaption().trim()
-                : "";
-        if (trimmedCaption.length() > MAX_CAPTION_LENGTH) {
+        String trimmedCaption =
+                (request.getCaption() != null)
+                        ? request.getCaption().trim()
+                        : "";
+
+        if (trimmedCaption.length()
+                > MAX_CAPTION_LENGTH) {
+
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,
-                    "Caption must not exceed " + MAX_CAPTION_LENGTH + " characters.");
+                    "Caption must not exceed "
+                            + MAX_CAPTION_LENGTH
+                            + " characters."
+            );
         }
 
         post.setCaption(trimmedCaption);
 
-        Post updatedPost = postRepository.save(post);
-        return new PostResponse(updatedPost);
+        Post updatedPost =
+                postRepository.save(post);
+
+        return createPostResponse(updatedPost);
     }
 
-    public void deletePost(Long id, Long userId) {
+    public void deletePost(
+            Long id,
+            Long userId) {
+
         Post post = postRepository
                 .findById(id)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.NOT_FOUND, "Post not found"));
+                .orElseThrow(() ->
+                        new ResponseStatusException(
+                                HttpStatus.NOT_FOUND,
+                                "Post not found"
+                        )
+                );
 
         if (!post.getUserId().equals(userId)) {
+
             throw new ResponseStatusException(
-                    HttpStatus.FORBIDDEN, "You are not allowed to delete this post");
+                    HttpStatus.FORBIDDEN,
+                    "You are not allowed to delete this post"
+            );
         }
 
         postRepository.delete(post);
+    }
+
+    private PostResponse createPostResponse(Post post) {
+
+        User user = userRepository
+                .findById(post.getUserId())
+                .orElse(null);
+
+        String username = null;
+
+        if (user != null) {
+            username = user.getUsername();
+        }
+
+        return new PostResponse(
+                post,
+                username
+        );
     }
 }

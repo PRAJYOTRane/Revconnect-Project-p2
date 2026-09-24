@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
@@ -24,9 +25,11 @@
 
 </head>
 
+
 <body>
 
 <div class="dashboard">
+
 
     <!-- ================= SIDEBAR ================= -->
 
@@ -396,9 +399,15 @@
                     What's on your mind? Share a photo or update...
                 </div>
 
-                <button type="button" class="quick-create-media-btn" id="quickCreatePhotoBtn">
+                <button
+                        type="button"
+                        class="quick-create-media-btn"
+                        id="quickCreatePhotoBtn">
+
                     <i data-lucide="image-plus"></i>
+
                     <span>Photo</span>
+
                 </button>
 
             </div>
@@ -432,347 +441,27 @@
             </div>
 
 
-            <!-- MASONRY GRID -->
+            <!-- FEED GRID
+                 Posts are loaded dynamically from the backend -->
 
-            <div class="feed-grid" id="feedGrid">
+            <div
+                    class="feed-grid"
+                    id="feedGrid">
+            </div>
 
 
-                <!-- CARD 1 -->
+            <!-- LOAD MORE -->
 
-                <article class="feed-card">
+            <div class="feed-load-more-wrap">
 
-                    <div class="media">
+                <button
+                        type="button"
+                        id="feedLoadMoreBtn"
+                        class="btn btn-outline-primary">
 
-                        <div class="media-placeholder media-one">
-                            🌴
-                        </div>
+                    Load more
 
-                    </div>
-
-
-                    <div class="card-info">
-
-                        <div class="card-user">
-
-                            <div class="mini-avatar">
-                                S
-                            </div>
-
-                            <span>
-                                @siddhi2806
-                            </span>
-
-                        </div>
-
-
-                        <div class="card-actions">
-
-                            <span>
-
-                                <i data-lucide="heart"></i>
-
-                                120
-
-                            </span>
-
-
-                            <span>
-
-                                <i data-lucide="message-circle"></i>
-
-                                18
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <!-- CARD 2 -->
-
-                <article class="feed-card">
-
-                    <div class="media">
-
-                        <div class="media-placeholder media-two">
-                            💻
-                        </div>
-
-
-                        <span class="media-badge">
-
-                            <i data-lucide="play"></i>
-
-                        </span>
-
-                    </div>
-
-
-                    <div class="card-info">
-
-                        <div class="card-user">
-
-                            <div class="mini-avatar">
-                                A
-                            </div>
-
-                            <span>
-                                @alexdev
-                            </span>
-
-                        </div>
-
-
-                        <div class="card-actions">
-
-                            <span>
-
-                                <i data-lucide="heart"></i>
-
-                                86
-
-                            </span>
-
-
-                            <span>
-
-                                <i data-lucide="message-circle"></i>
-
-                                12
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <!-- CARD 3 -->
-
-                <article class="feed-card">
-
-                    <div class="media">
-
-                        <div class="media-placeholder media-three">
-                            ☕
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-info">
-
-                        <div class="card-user">
-
-                            <div class="mini-avatar">
-                                M
-                            </div>
-
-                            <span>
-                                @maya
-                            </span>
-
-                        </div>
-
-
-                        <div class="card-actions">
-
-                            <span>
-
-                                <i data-lucide="heart"></i>
-
-                                214
-
-                            </span>
-
-
-                            <span>
-
-                                <i data-lucide="message-circle"></i>
-
-                                32
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <!-- CARD 4 -->
-
-                <article class="feed-card">
-
-                    <div class="media">
-
-                        <div class="media-placeholder media-four">
-                            🌊
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-info">
-
-                        <div class="card-user">
-
-                            <div class="mini-avatar">
-                                R
-                            </div>
-
-                            <span>
-                                @rahul
-                            </span>
-
-                        </div>
-
-
-                        <div class="card-actions">
-
-                            <span>
-
-                                <i data-lucide="heart"></i>
-
-                                154
-
-                            </span>
-
-
-                            <span>
-
-                                <i data-lucide="message-circle"></i>
-
-                                21
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <!-- CARD 5 -->
-
-                <article class="feed-card">
-
-                    <div class="media">
-
-                        <div class="media-placeholder media-five">
-                            🎨
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-info">
-
-                        <div class="card-user">
-
-                            <div class="mini-avatar">
-                                S
-                            </div>
-
-                            <span>
-                                @sarah
-                            </span>
-
-                        </div>
-
-
-                        <div class="card-actions">
-
-                            <span>
-
-                                <i data-lucide="heart"></i>
-
-                                98
-
-                            </span>
-
-
-                            <span>
-
-                                <i data-lucide="message-circle"></i>
-
-                                9
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <!-- CARD 6 -->
-
-                <article class="feed-card">
-
-                    <div class="media">
-
-                        <div class="media-placeholder media-six">
-                            🏔️
-                        </div>
-
-
-                        <span class="media-badge">
-
-                            <i data-lucide="images"></i>
-
-                        </span>
-
-                    </div>
-
-
-                    <div class="card-info">
-
-                        <div class="card-user">
-
-                            <div class="mini-avatar">
-                                K
-                            </div>
-
-                            <span>
-                                @krish
-                            </span>
-
-                        </div>
-
-
-                        <div class="card-actions">
-
-                            <span>
-
-                                <i data-lucide="heart"></i>
-
-                                176
-
-                            </span>
-
-
-                            <span>
-
-                                <i data-lucide="message-circle"></i>
-
-                                25
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </article>
+                </button>
 
             </div>
 
@@ -787,107 +476,312 @@
      INSTAGRAM-STYLE CREATE POST MODAL
 ====================================================== -->
 
-<div id="createPostModal" class="ig-modal-overlay" style="display: none;">
+<div
+        id="createPostModal"
+        class="ig-modal-overlay"
+        style="display: none;">
 
-    <div class="ig-modal-dialog" id="igModalDialog">
+    <div
+            class="ig-modal-dialog"
+            id="igModalDialog">
+
 
         <!-- HEADER -->
+
         <div class="ig-modal-header">
-            <button type="button" class="ig-header-icon-btn" id="modalBackBtn" style="display: none;" title="Back to photo selection">
+
+            <button
+                    type="button"
+                    class="ig-header-icon-btn"
+                    id="modalBackBtn"
+                    style="display: none;"
+                    title="Back to photo selection">
+
                 <i data-lucide="arrow-left"></i>
+
             </button>
 
-            <span class="ig-modal-title" id="modalTitle">Create new post</span>
+
+            <span
+                    class="ig-modal-title"
+                    id="modalTitle">
+
+                Create new post
+
+            </span>
+
 
             <div class="ig-header-right">
-                <button type="button" class="ig-header-action-btn" id="modalHeaderShareBtn" style="display: none;">
+
+                <button
+                        type="button"
+                        class="ig-header-action-btn"
+                        id="modalHeaderShareBtn"
+                        style="display: none;">
+
                     Share
+
                 </button>
-                <button type="button" class="ig-header-icon-btn" id="modalCloseBtn" title="Close">
+
+
+                <button
+                        type="button"
+                        class="ig-header-icon-btn"
+                        id="modalCloseBtn"
+                        title="Close">
+
                     <i data-lucide="x"></i>
+
                 </button>
+
             </div>
+
         </div>
+
 
         <!-- STEP 1: SELECT PHOTO (DRAG & DROP) -->
-        <div class="ig-modal-body" id="modalSelectStep">
-            <div class="ig-dropzone" id="igDropzone">
+
+        <div
+                class="ig-modal-body"
+                id="modalSelectStep">
+
+            <div
+                    class="ig-dropzone"
+                    id="igDropzone">
+
                 <div class="ig-dropzone-icon">
+
                     <i data-lucide="image-plus"></i>
+
                 </div>
-                <h3 class="ig-dropzone-title">Drag photos here</h3>
-                <p class="ig-dropzone-sub">Supports JPG, PNG, WEBP, GIF</p>
-                <button type="button" class="ig-btn-primary" id="modalSelectFileBtn">
+
+
+                <h3 class="ig-dropzone-title">
+                    Drag photos here
+                </h3>
+
+
+                <p class="ig-dropzone-sub">
+                    Supports JPG, PNG, WEBP, GIF
+                </p>
+
+
+                <button
+                        type="button"
+                        class="ig-btn-primary"
+                        id="modalSelectFileBtn">
+
                     Select from computer
+
                 </button>
-                <input type="file" id="modalFileInput" accept="image/*" hidden>
+
+
+                <input
+                        type="file"
+                        id="modalFileInput"
+                        accept="image/*"
+                        hidden>
+
             </div>
+
         </div>
 
+
         <!-- STEP 2: PHOTO PREVIEW & ENTER CAPTION (SPLIT VIEW) -->
-        <div class="ig-modal-body ig-split-view" id="modalDetailsStep" style="display: none;">
+
+        <div
+                class="ig-modal-body ig-split-view"
+                id="modalDetailsStep"
+                style="display: none;">
+
 
             <!-- LEFT: PHOTO PREVIEW -->
+
             <div class="ig-preview-pane">
+
                 <div class="ig-preview-img-wrapper">
-                    <img id="modalPreviewImg" src="" alt="Photo Preview">
+
+                    <img
+                            id="modalPreviewImg"
+                            src=""
+                            alt="Photo Preview">
+
                 </div>
+
+
                 <div class="ig-preview-tools">
-                    <button type="button" class="ig-preview-tool-btn" id="modalChangePhotoBtn" title="Choose another photo">
+
+                    <button
+                            type="button"
+                            class="ig-preview-tool-btn"
+                            id="modalChangePhotoBtn"
+                            title="Choose another photo">
+
                         <i data-lucide="image"></i>
-                        <span>Change photo</span>
+
+                        <span>
+                            Change photo
+                        </span>
+
                     </button>
+
                 </div>
+
             </div>
 
+
             <!-- RIGHT: USER, CAPTION & SHARE -->
+
             <div class="ig-caption-pane">
+
                 <div class="ig-author-header">
-                    <div class="ig-author-avatar" id="modalUserAvatar">U</div>
-                    <div class="ig-author-details">
-                        <strong id="modalUsername">username</strong>
-                        <span class="ig-account-type-badge" id="modalAccountType">Personal</span>
+
+                    <div
+                            class="ig-author-avatar"
+                            id="modalUserAvatar">
+
+                        U
+
                     </div>
+
+
+                    <div class="ig-author-details">
+
+                        <strong id="modalUsername">
+                            username
+                        </strong>
+
+                        <span
+                                class="ig-account-type-badge"
+                                id="modalAccountType">
+
+                            Personal
+
+                        </span>
+
+                    </div>
+
                 </div>
 
+
                 <div class="ig-caption-box">
+
                     <textarea
                             id="modalCaptionText"
                             placeholder="Write a caption..."
                             rows="6"
                             maxlength="2200"></textarea>
 
+
                     <div class="ig-caption-footer">
+
                         <div class="ig-quick-emojis">
-                            <span class="ig-quick-emoji" data-emoji="🔥">🔥</span>
-                            <span class="ig-quick-emoji" data-emoji="❤️">❤️</span>
-                            <span class="ig-quick-emoji" data-emoji="✨">✨</span>
-                            <span class="ig-quick-emoji" data-emoji="🙌">🙌</span>
-                            <span class="ig-quick-emoji" data-emoji="🚀">🚀</span>
-                            <span class="ig-quick-emoji" data-emoji="📸">📸</span>
+
+                            <span
+                                    class="ig-quick-emoji"
+                                    data-emoji="🔥">
+                                🔥
+                            </span>
+
+                            <span
+                                    class="ig-quick-emoji"
+                                    data-emoji="❤️">
+                                ❤️
+                            </span>
+
+                            <span
+                                    class="ig-quick-emoji"
+                                    data-emoji="✨">
+                                ✨
+                            </span>
+
+                            <span
+                                    class="ig-quick-emoji"
+                                    data-emoji="🙌">
+                                🙌
+                            </span>
+
+                            <span
+                                    class="ig-quick-emoji"
+                                    data-emoji="🚀">
+                                🚀
+                            </span>
+
+                            <span
+                                    class="ig-quick-emoji"
+                                    data-emoji="📸">
+                                📸
+                            </span>
+
                         </div>
-                        <span class="ig-char-counter" id="modalCharCounter">0/2,200</span>
+
+
+                        <span
+                                class="ig-char-counter"
+                                id="modalCharCounter">
+
+                            0/2,200
+
+                        </span>
+
                     </div>
+
                 </div>
+
 
                 <div class="ig-caption-meta">
+
                     <div class="ig-meta-row">
+
                         <i data-lucide="map-pin"></i>
-                        <span>Add Location</span>
+
+                        <span>
+                            Add Location
+                        </span>
+
                     </div>
+
+
                     <div class="ig-meta-row">
+
                         <i data-lucide="tag"></i>
-                        <span>Tag People</span>
+
+                        <span>
+                            Tag People
+                        </span>
+
                     </div>
+
                 </div>
 
+
                 <div class="ig-caption-action-area">
-                    <div id="modalStatusAlert" class="ig-status-alert" style="display: none;"></div>
-                    <button type="button" class="ig-share-btn-main" id="modalShareSubmitBtn">
-                        <span class="btn-text">Share</span>
-                        <span class="btn-spinner" style="display: none;"></span>
+
+                    <div
+                            id="modalStatusAlert"
+                            class="ig-status-alert"
+                            style="display: none;">
+                    </div>
+
+
+                    <button
+                            type="button"
+                            class="ig-share-btn-main"
+                            id="modalShareSubmitBtn">
+
+                        <span class="btn-text">
+                            Share
+                        </span>
+
+                        <span
+                                class="btn-spinner"
+                                style="display: none;">
+                        </span>
+
                     </button>
+
                 </div>
+
             </div>
 
         </div>
